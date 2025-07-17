@@ -58,8 +58,8 @@ public static class MonkeyHelper
 
         // Simulate some async work
         await Task.Delay(25);
-        
-        return _monkeys.FirstOrDefault(m => 
+
+        return _monkeys.FirstOrDefault(m =>
             string.Equals(m.Name, name, StringComparison.OrdinalIgnoreCase));
     }
 
@@ -72,8 +72,8 @@ public static class MonkeyHelper
     {
         if (string.IsNullOrWhiteSpace(name))
             return null;
-            
-        return _monkeys.FirstOrDefault(m => 
+
+        return _monkeys.FirstOrDefault(m =>
             string.Equals(m.Name, name, StringComparison.OrdinalIgnoreCase));
     }
 
@@ -85,7 +85,7 @@ public static class MonkeyHelper
     {
         // Simulate some async work
         await Task.Delay(25);
-        
+
         var random = new Random();
         var index = random.Next(_monkeys.Count);
         return _monkeys[index];
