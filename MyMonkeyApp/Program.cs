@@ -51,14 +51,14 @@ internal class Program
     private static async Task RunMenuAsync()
     {
         bool running = true;
-        
+
         while (running)
         {
             DisplayMenu();
             var choice = Console.ReadLine()?.Trim();
-            
+
             Console.WriteLine();
-            
+
             switch (choice)
             {
                 case "1":
@@ -86,7 +86,7 @@ internal class Program
                     Console.ResetColor();
                     break;
             }
-            
+
             if (running)
             {
                 Console.WriteLine("\nPress any key to continue...");
@@ -125,16 +125,16 @@ internal class Program
         Console.WriteLine("🐒 All Available Monkeys:");
         Console.ResetColor();
         Console.WriteLine();
-        
+
         try
         {
             var monkeys = await MonkeyHelper.GetMonkeysAsync();
-            
+
             for (int i = 0; i < monkeys.Count; i++)
             {
                 Console.WriteLine($"{i + 1,2}. {monkeys[i]}");
             }
-            
+
             Console.WriteLine();
             Console.ForegroundColor = ConsoleColor.Gray;
             Console.WriteLine($"Total: {monkeys.Count} monkey species");
@@ -157,19 +157,19 @@ internal class Program
         Console.ResetColor();
         Console.WriteLine();
         Console.Write("Enter the monkey name: ");
-        
+
         var name = Console.ReadLine()?.Trim();
-        
+
         if (string.IsNullOrWhiteSpace(name))
         {
             DisplayError("Please enter a valid monkey name.");
             return;
         }
-        
+
         try
         {
             var monkey = await MonkeyHelper.GetMonkeyByNameAsync(name);
-            
+
             if (monkey != null)
             {
                 Console.WriteLine();
@@ -204,7 +204,7 @@ internal class Program
         Console.WriteLine("🎲 Random Monkey:");
         Console.ResetColor();
         Console.WriteLine();
-        
+
         try
         {
             var monkey = await MonkeyHelper.GetRandomMonkeyAsync();
@@ -231,7 +231,7 @@ internal class Program
         Console.WriteLine($"   Location: {monkey.Location}");
         Console.WriteLine($"   Population: {monkey.Population:N0}");
         Console.WriteLine();
-        
+
         // Add some fun ASCII art based on the monkey type
         DisplayMonkeyArt(monkey.Name);
     }
@@ -243,7 +243,7 @@ internal class Program
     private static void DisplayMonkeyArt(string monkeyName)
     {
         Console.ForegroundColor = ConsoleColor.DarkYellow;
-        
+
         // Simple ASCII art variations
         if (monkeyName.Contains("Spider", StringComparison.OrdinalIgnoreCase))
         {
@@ -278,6 +278,17 @@ internal class Program
             \_/
 ");
         }
+        else if (monkeyName.Contains("Baboon", StringComparison.OrdinalIgnoreCase))
+        {
+            Console.WriteLine(@"
+       🦧 Baboon 🦧
+            ___
+           /   \
+          | o o |
+           \ ~ /
+            \_/
+");
+        }
         else
         {
             Console.WriteLine(@"
@@ -289,7 +300,7 @@ internal class Program
            \_/
 ");
         }
-        
+
         Console.ResetColor();
     }
 
