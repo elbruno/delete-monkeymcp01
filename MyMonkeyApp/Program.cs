@@ -1,4 +1,4 @@
-﻿using MyMonkeyApp.Helpers;
+using MyMonkeyApp.Helpers;
 using MyMonkeyApp.Models;
 
 namespace MyMonkeyApp;
